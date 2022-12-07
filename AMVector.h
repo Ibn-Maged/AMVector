@@ -1,3 +1,5 @@
+#ifndef AMVECTOR_H
+#define AMVECTOR_H
 using namespace std;
 
 template <class T>
@@ -17,8 +19,8 @@ public:
     AMVector (int);			// Initialize by specific capacity
     // No content is added, size = 0
     // Assign a default size value
-    AMVector (T*, int  n );		// Initialize by n items from array 
-    AMVector (const AMVector&);	// Initialize with a copy
+    AMVector (T* arr, int  n);		// Initialize by n items from array 
+    AMVector (const AMVector& anotherVector);	// Initialize with a copy
     //~AMVector();				// Delete allocated memory
     AMVector<T> &operator=(const AMVector& v);  // Copy assignment  
     AMVector<T> &operator=(const AMVector&& v); // Move assignment 
@@ -47,7 +49,7 @@ public:
     // apply STL algorithms on AMVector
     // Mohamed
     iterator begin();	// Return an iterator (T*) 
-    iterator end();	// Return an iterator (T*) 
+    iterator end();	    // Return an iterator (T*) 
 
     // Comparison operations 
     bool operator==(const AMVector<T>& anotherVector); // Return true if ==  
@@ -65,3 +67,5 @@ public:
     // Friends 
     friend ostream& operator << (ostream& out, AMVector<T> v);
 };
+//#include "AMvector.cpp"
+#endif

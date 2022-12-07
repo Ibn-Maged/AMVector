@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
-#include "AMVector.h"
+#include "AMVector.cpp"
 
 using namespace std;
 
 int main()
 {
-    AMVector<int> v1;
+    int arr[5] = {1,2,3,4,5};
+    AMVector<int> v1(arr, 5);
 
-    cout << 5;
+    cout << "Hello, World.\n" << v1[4];
 }
