@@ -26,9 +26,9 @@ public:
     // Assign a default size value
     AMVector (T* arr, int  n);		// Initialize by n items from array 
     AMVector (const AMVector& anotherVector);	// Initialize with a copy
-    //~AMVector();				// Delete allocated memory
-    AMVector<T> &operator=(const AMVector& v);  // Copy assignment  
-    AMVector<T> &operator=(const AMVector&& v); // Move assignment 
+    ~AMVector();				// Delete allocated memory
+    AMVector<T> &operator=(const AMVector& anotherVector);  // Copy assignment  
+    AMVector<T> &operator=(const AMVector&& anotherVector); // Move assignment 
 
     // Access operations 
     T& operator[](int i); // Access item by reference 
