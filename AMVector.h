@@ -2,6 +2,11 @@
 #define AMVECTOR_H
 using namespace std;
 
+template<class T> class AMVector;
+template<class T> ostream& operator<< (ostream& out,  AMVector<T>& v);
+
+
+
 template <class T>
 
 class AMVector 
@@ -65,7 +70,7 @@ public:
     bool empty();         // Return true if size is 0
 
     // Friends 
-    friend ostream& operator << (ostream& out, AMVector<T> v);
+    friend ostream& operator<< <> (ostream& out,  AMVector<T>& v);
 };
 //#include "AMvector.cpp"
 #endif
