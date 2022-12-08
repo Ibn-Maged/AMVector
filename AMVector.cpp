@@ -14,7 +14,7 @@ AMVector<T>::AMVector(int n)
 template <typename T>
 AMVector<T>::AMVector(T* arr, int n)
 {
-    Capacity = 10;
+    Capacity = n;
     Size = n;
     ptr = new T[Capacity];
     for (int i = 0; i < n; i++)
@@ -26,6 +26,9 @@ AMVector<T>::AMVector(T* arr, int n)
 template <typename T>
 T& AMVector<T>::operator[](int i)
 {
+    // if (i>=Size and i<Capacity)     return 0
+    
+    
     if (i < Size)
     {
         return *(ptr + i);
@@ -40,7 +43,7 @@ template <typename T>
 int AMVector<T>::push_back(T value){
     
     if(Size==Capacity){
-        Capacity++;
+        resize();
     }
     else{
         ptr[Size]=value;
@@ -100,11 +103,11 @@ template <typename T>
 
 int AMVector<T>::resize(){
 
-    Capacity +=10;
-    Size +=5;
+    Capacity = Size*2;
+    
 
 
-    return Size;
+    return Capacity;
 
 }
 
@@ -121,5 +124,81 @@ ostream& operator<< (ostream& out,  AMVector<T>& v){
 
 
 
+template <class T>
 
+void AMVector<T>::erase(iterator it){
+
+    if(it < begin() or it> end()){
+        return;
+        //invaild iteartor
+        // throw exception
+    }
+
+
+    if  (it==end()){
+        *it=0;
+        Size--;
+
+    }
+
+    else {
+        for (auto x = it ; x!=end(); x++ ){
+
+        *x = *(x+1);
+        
+    }
+        Size--;
+
+    }
+    
+
+}
+
+template <class T>
+
+void AMVector<T>::erase(iterator it1,iterator it2){
+    if ((it1 < begin() or it1> end()) or (it2 < begin() or it2> end())){
+        return;
+        // invailed range
+        // throw exception
+    }
+    if (it1==it2){
+        return;
+    }
+    else{
+    auto y=it2+1;
+    for (auto x = it1 ; x!=it2 ;x++ ){
+        *x = *(y);
+        y++;
+        Size--; 
+    }
+    }
+
+    Size--;
+
+}
+
+template <class T>
+void AMVector<T>::insert(iterator it, T value){
+    auto y= (ptr + Capacity - 1);
+    if(it>y or it<begin()){
+        return;
+        //invailed iterator out of capacity 
+        // throw exception
+    }
+    else if (it <= y and it >= begin()){
+        *it = value;
+        return;
+    }
+    else{
+        for (auto x = end() ; x!=(it-1); x-- ){
+            *(x+1)= *x;
+    }
+    *it= value;
+    Size++;
+    }
+
+    
+
+}
 

@@ -53,6 +53,7 @@ public:
     // Or u can use std::iterator so you can 
     // apply STL algorithms on AMVector
     // Mohamed
+    
     iterator begin()	// Return an iterator (T*)
     {
         return ptr;
@@ -77,5 +78,6 @@ public:
     // Friends 
     friend ostream& operator<< <> (ostream& out,  AMVector<T>& v);
 };
+
 //#include "AMvector.cpp"
 #endif
