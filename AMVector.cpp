@@ -34,7 +34,6 @@ T& AMVector<T>::operator[](int i)
     {
         // throw exception 
     }
-
 }
 
 template <typename T>

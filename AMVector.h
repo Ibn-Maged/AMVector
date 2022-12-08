@@ -53,9 +53,14 @@ public:
     // Or u can use std::iterator so you can 
     // apply STL algorithms on AMVector
     // Mohamed
-    iterator begin();	// Return an iterator (T*) 
-    iterator end();	    // Return an iterator (T*) 
-
+    iterator begin()	// Return an iterator (T*)
+    {
+        return ptr;
+    } 
+    iterator end()	    // Return an iterator (T*) 
+    {
+        return (ptr + Size - 1);
+    }
     // Comparison operations 
     bool operator==(const AMVector<T>& anotherVector); // Return true if ==  
     bool operator<(const AMVector<T>& anotherVector);  // Compares item by item

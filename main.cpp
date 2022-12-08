@@ -17,17 +17,12 @@ int main()
 
     v1.clear();
     cout<<v1[0]<<endl;
-    
 
+    std::cout << *(v1.begin()) << ' ' << *(v1.end());
 
-
-
-
-
-
-    
-
-
+    auto x = v1.begin();
+    x++;
+    cout << '\n' << *x;
 
     
 }
