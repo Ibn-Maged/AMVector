@@ -27,8 +27,8 @@ public:
     AMVector (T* arr, int  n);		// Initialize by n items from array 
     AMVector (const AMVector& anotherVector);	// Initialize with a copy
     ~AMVector();				// Delete allocated memory
-    AMVector<T> &operator=(const AMVector& anotherVector);  // Copy assignment  
-    AMVector<T> &operator=(const AMVector&& anotherVector); // Move assignment 
+    AMVector<T> &operator=(const AMVector& v);  // Copy assignment  
+    AMVector<T> &operator=(const AMVector&& v); // Move assignment 
 
     // Access operations 
     T& operator[](int i); // Access item by reference 
@@ -53,6 +53,7 @@ public:
     // Or u can use std::iterator so you can 
     // apply STL algorithms on AMVector
     // Mohamed
+    
     iterator begin()	// Return an iterator (T*)
     {
         return ptr;
@@ -77,5 +78,6 @@ public:
     // Friends 
     friend ostream& operator<< <> (ostream& out,  AMVector<T>& v);
 };
+
 //#include "AMvector.cpp"
 #endif
