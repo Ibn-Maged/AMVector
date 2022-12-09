@@ -23,7 +23,7 @@ int main()
     cout<<v1[0]<<endl;
    
 
-    std::cout << *(v1.begin()) << ' ' << *(v1.end())<<endl;
+    std::cout << *(++v1.begin()) << ' ' << *(v1.end())<<endl;
    
 
     cout<<endl;

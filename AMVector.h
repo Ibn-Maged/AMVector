@@ -15,6 +15,7 @@ private:
     int Size;
     int Capacity = 10;
     T* ptr;
+    T* temp;
     typedef T* iterator;
 
 public:
@@ -54,13 +55,15 @@ public:
     // apply STL algorithms on AMVector
     // Mohamed
     
-    iterator begin()	// Return an iterator (T*)
+    iterator& begin()	// Return an iterator (T*)
     {
-        return ptr;
+        temp = ptr;
+        return temp;
     } 
-    iterator end()	    // Return an iterator (T*) 
+    iterator& end()	    // Return an iterator (T*) 
     {
-        return (ptr + Size - 1);
+        temp = ptr + Size -1;
+        return temp;
     }
     // Comparison operations 
     bool operator==(const AMVector<T>& anotherVector); // Return true if ==  
