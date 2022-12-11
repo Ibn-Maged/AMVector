@@ -75,7 +75,7 @@ public:
     // Capacity operations 
     int size();     // Return current size of vec
     int capacity(); // Return size of current allocated array  
-    void resize(int n);         // Relocate to bigger space
+    void resize();         // Relocate to bigger space
     bool empty();         // Return true if size is 0
 
     // Friends 
