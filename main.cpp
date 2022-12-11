@@ -9,14 +9,11 @@ int main()
 
 
     vector <int> s{1,12,4,78,5,7,23};
-    if(binary_search(s.begin(), s.end(), 78))
-    cout<<"yes"<<endl;
-    else
-    cout<<"no "<<endl;
-    sort(s.begin() , s.end());
-    for(int i = 0 ; i<s.size(); i++){
-        cout<<s[i]<<" ";
-    }
+    // cout << *(s.end());
+    int arr[] = {1,2,3,4,5};
+    AMVector <int> v(arr, 5);
+    cout << v[0] << '\n';
+    cout << v[8];
     /*int arr[7] = {1,12,4,78,5,7,23};
     AMVector<int> v1(arr, 7);
         std::cout << *(v1.begin()) << ' ' << *(v1.end())<<endl;

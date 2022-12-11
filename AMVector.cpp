@@ -28,15 +28,27 @@ T& AMVector<T>::operator[](int i)
 {
     // if (i>=Size and i<Capacity)     return 0
     
-    
-    if (i < Capacity)
+    try
     {
+        if(i >= Capacity)
+        {
+            throw "Error Index Out of Range";
+        }
         return *(ptr + i);
     }
-    else 
+    catch(const char* e)
     {
-        // throw exception 
+        std::cerr<< e << '\n';
     }
+    
+    // if (i < Capacity)
+    // {
+    //     return *(ptr + i);
+    // }
+    // else 
+    // {
+    //     // throw exception 
+    // }
 }
 // copy Constructor
 template <typename T>
@@ -96,7 +108,7 @@ template <typename T>
 int AMVector<T>::push_back(T value){
     
     if(Size==Capacity){
-        resize();
+        resize(2 * Capacity);
     }
     else{
         ptr[Size]=value;
@@ -114,9 +126,7 @@ T AMVector<T>::pop_back(){
         // throw exaption
     }
     else{
-        ptr[Size-1]=0;
         Size--;
-
     }
     return ptr[Size-1];
 }
@@ -154,14 +164,9 @@ bool AMVector<T>::empty(){
 
 template <typename T>
 
-int AMVector<T>::resize(){
+void AMVector<T>::resize(int n){
 
-    Capacity = Size*2;
-    
-
-
-    return Capacity;
-
+    Capacity = n;
 }
 
 template <typename T>

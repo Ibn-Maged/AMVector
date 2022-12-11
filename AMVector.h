@@ -62,7 +62,7 @@ public:
     } 
     iterator& end()	    // Return an iterator (T*) 
     {
-        temp = ptr + Size -1;
+        temp = ptr + Size;
         return temp;
     }
     // Comparison operations 
@@ -75,7 +75,7 @@ public:
     // Capacity operations 
     int size();     // Return current size of vec
     int capacity(); // Return size of current allocated array  
-    int resize();         // Relocate to bigger space
+    void resize(int n);         // Relocate to bigger space
     bool empty();         // Return true if size is 0
 
     // Friends 
