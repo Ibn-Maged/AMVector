@@ -12,8 +12,15 @@ int main()
     // cout << *(s.end());
     int arr[] = {4,6,2,5,1};
     AMVector <int> v(arr, 5);
+    
     cout<<v<<endl;
-    sort(v.begin(), v.end());
+    cout<<v.size()<<endl;
+    cout<<v.capacity()<<endl;
+    v.push_back(45);
+     cout<<v<<endl;
+    cout<<v.size()<<endl;
+    cout<<v.capacity()<<endl;
+    /*sort(v.begin(), v.end());
     cout<<v<<endl;
     int sum=0;
     cout <<accumulate(v.begin() , v.end() , sum)<<endl;
@@ -27,6 +34,7 @@ int main()
     reverse(v1.begin(), v1.end());
     cout<<v1<<endl;
     cout<<*(++v1.begin())<<endl;
+    */
     
 
    

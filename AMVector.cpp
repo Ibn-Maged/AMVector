@@ -173,7 +173,24 @@ template <typename T>
 
 void AMVector<T>::resize(){
 
+    T* temp1;
+    temp1 = new T[Capacity];
+    for (int i = 0; i < Size; i++)
+    {
+        temp1[i] = ptr[i];
+    }
+    delete [] ptr;
+
+    ptr = new T[Capacity*2];
+    for (int i = 0; i < Size; i++)
+    {
+        ptr[i] = temp1[i];
+    }
+    delete [] temp1;
     Capacity = Capacity*2;
+
+    
+
 }
 
 template <typename T>
