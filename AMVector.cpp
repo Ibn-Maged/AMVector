@@ -9,6 +9,24 @@ AMVector<T>::AMVector(int n)
     Capacity = n;
     Size = 0;
     ptr = new T[Capacity];
+    for (int i = 0; i < Capacity; i++)
+    {
+        ptr[i] = 0;
+    }
+    
+}
+
+template <>
+AMVector<string>::AMVector(int n)
+{
+    Capacity = n;
+    Size = 0;
+    ptr = new string[Capacity];
+    for (int i = 0; i < Capacity; i++)
+    {
+        ptr[i] = "N/L";
+    }
+    
 }
 
 template <typename T>
@@ -21,6 +39,29 @@ AMVector<T>::AMVector(T* arr, int n)
     {
         ptr[i] = arr[i];
     }
+    for (int i = n; i < Capacity; i++)
+    {
+        ptr[i] = 0;
+    }
+    
+}
+
+template <>
+AMVector<string>::AMVector(string* arr, int n)
+{
+    Capacity = n;
+    Size = n;
+    ptr = new string[Capacity];
+    for (int i = 0; i < n; i++)
+    {
+        ptr[i] = arr[i];
+    }
+    
+    for (int i = n; i < Capacity; i++)
+    {
+        ptr[i] = "N/L";
+    }
+    
 }
 
 template <typename T>
@@ -40,15 +81,6 @@ T& AMVector<T>::operator[](int i)
     {
         std::cerr<< e << '\n';
     }
-    
-    // if (i < Capacity)
-    // {
-    //     return *(ptr + i);
-    // }
-    // else 
-    // {
-    //     // throw exception 
-    // }
 }
 // copy Constructor
 template <typename T>
@@ -58,11 +90,12 @@ AMVector<T>::AMVector(const AMVector& anotherVector)
     this->Size = anotherVector.Size;
     this->Capacity = anotherVector.Capacity;
     ptr = new T[Capacity];
-    for (int i = 0; i < Size; i++)
+    for (int i = 0; i < Capacity; i++)
     {
         ptr[i] = anotherVector.ptr[i];
     }
 }
+
 
 template <typename T>
 AMVector<T>& AMVector<T>::operator=(const AMVector& anotherVector)  // Copy assignment  
@@ -74,7 +107,7 @@ AMVector<T>& AMVector<T>::operator=(const AMVector& anotherVector)  // Copy assi
         this->Size = anotherVector.Size;
         this->Capacity = anotherVector.Capacity;
         ptr = new T[Capacity];
-        for (int i = 0; i < Size; i++)
+        for (int i = 0; i < Capacity; i++)
         {
             ptr[i] = anotherVector.ptr[i];
         }
@@ -90,7 +123,7 @@ AMVector<T>& AMVector<T>::operator=(const AMVector&& anotherVector) // Move assi
     this->Size = anotherVector.Size;
     this->Capacity = anotherVector.Capacity;
     ptr = new T[Capacity];
-    for (int i = 0; i < Size; i++)
+    for (int i = 0; i < Capacity; i++)
     {
         ptr[i] = anotherVector.ptr[i];
     }
@@ -134,8 +167,6 @@ T AMVector<T>::pop_back(){
     {
         std::cerr<< e << '\n';
     }
-
-    
 }
 
 
@@ -196,12 +227,12 @@ void AMVector<T>::resize(){
 template <typename T>
 bool AMVector<T>::operator<(const AMVector<T>& anotherVector)
 {
-    if(Size != anotherVector.Size)
+    try
     {
-        // throw exception
-    }
-    else
-    {
+        if(Size != anotherVector.Size)
+        {
+            throw "Exception Caught:: Cannot Compare Vectors of Different Sizes";
+        }
         for (int i = 0; i < Size; i++)
         {
             if (ptr[i] > anotherVector.ptr[i])
@@ -210,18 +241,38 @@ bool AMVector<T>::operator<(const AMVector<T>& anotherVector)
             }
         }
     }
+    catch(const char* e)
+    {
+        std::cerr << e << '\n';
+    }
+    
+    
+    // if(Size != anotherVector.Size)
+    // {
+    //     // throw exception
+    // }
+    // else
+    // {
+    //     for (int i = 0; i < Size; i++)
+    //     {
+    //         if (ptr[i] > anotherVector.ptr[i])
+    //         {
+    //             return false;
+    //         }
+    //     }
+    // }
     return true;
 }
 
 template <typename T>
 bool AMVector<T>::operator>(const AMVector<T>& anotherVector)
 {
-    if(Size != anotherVector.Size)
+    try
     {
-        // throw exception
-    }
-    else
-    {
+        if(Size != anotherVector.Size)
+        {
+            throw "Exception Caught:: Cannot Compare Vectors of Different Sizes";
+        }
         for (int i = 0; i < Size; i++)
         {
             if (ptr[i] < anotherVector.ptr[i])
@@ -230,6 +281,25 @@ bool AMVector<T>::operator>(const AMVector<T>& anotherVector)
             }
         }
     }
+    catch(const char* e)
+    {
+        std::cerr << e << '\n';
+    }
+    
+    // if(Size != anotherVector.Size)
+    // {
+    //     // throw exception
+    // }
+    // else
+    // {
+    //     for (int i = 0; i < Size; i++)
+    //     {
+    //         if (ptr[i] < anotherVector.ptr[i])
+    //         {
+    //             return false;
+    //         }
+    //     }
+    // }
     return true;
 }
 

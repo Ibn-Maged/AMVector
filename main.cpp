@@ -6,20 +6,33 @@ using namespace std;
 
 int main()
 {
+    // AMVector<int> v1(5);
+    // AMVector<string> v2(5);
 
+    // cout << v1[0] << ' ' <<  v2[0] << '\n';
 
-    vector <int> s{1,12,4,78,5,7,23};
-    // cout << *(s.end());
-    int arr[] = {4,6,2,5,1};
-    AMVector <int> v(arr, 5);
+    int arr[] = {1,2,3,4,5};
+    AMVector<int> v1(arr, 5);
+    AMVector<int> v2(arr, 5);
+    v2.push_back(6);
+    v2.push_back(7);
+    if(v1 < v2)
+    {
+        cout << "True" << '\n';
+    }
+
+    // vector <int> s{1,12,4,78,5,7,23};
+    // // cout << *(s.end());
+    // int arr[] = {4,6,2,5,1};
+    // AMVector <int> v(arr, 5);
     
-    cout<<v<<endl;
-    cout<<v.size()<<endl;
-    cout<<v.capacity()<<endl;
-    v.push_back(45);
-     cout<<v<<endl;
-    cout<<v.size()<<endl;
-    cout<<v.capacity()<<endl;
+    // cout<<v<<endl;
+    // cout<<v.size()<<endl;
+    // cout<<v.capacity()<<endl;
+    // v.push_back(45);
+    //  cout<<v<<endl;
+    // cout<<v.size()<<endl;
+    // cout<<v.capacity()<<endl;
     /*sort(v.begin(), v.end());
     cout<<v<<endl;
     int sum=0;

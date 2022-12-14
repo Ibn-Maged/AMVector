@@ -103,9 +103,16 @@ void NimVariant1::Run(){
                  H +=n;
           }
           else if(whoseTurn == COMPUTER){
-              	n = findGoodMove(nCoins,C);
-              	if (!n)
+                if (nCoins == 1) 
+                {
                     n = 1;
+                }
+                else
+                {
+                    n = findGoodMove(nCoins,C);
+                    if (!n)
+                        n = 1;
+                }
                 C += n ;
 				cout << "Computer takes " << n << " coins.\n" ;
            }
